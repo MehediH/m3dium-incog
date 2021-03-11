@@ -1,5 +1,5 @@
 chrome.extension.sendMessage({}, function(response) {
-	var readyStateCheckInterval = setInterval(function() {
+	let readyStateCheckInterval = setInterval(function() {
 	if (document.readyState === "complete") {
 		clearInterval(readyStateCheckInterval);
 
@@ -18,10 +18,7 @@ chrome.extension.sendMessage({}, function(response) {
 		let showingUpgrade = document.getElementById("paywall-upsell-button-upgrade");
 
 		if(isMedium && showingUpgrade){
-			chrome.runtime.sendMessage({openMedium: window.location.href}, function(response) {
-				// console.log(response.farewell);
-			  });
-
+			chrome.runtime.sendMessage({openMedium: window.location.href});
 		}
 	}
 	}, 10);
